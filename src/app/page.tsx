@@ -6,6 +6,7 @@ import {
 import { FeatureCard } from "@/components/home/FeatureCard";
 import { FeaturedGrid } from "@/components/home/FeaturedGrid";
 import { FeaturedCollectionsGrid } from "@/components/home/FeaturedCollectionsGrid";
+import { LogoArtwork } from "@/components/brand/LogoArtwork";
 import { SermonPreview } from "@/components/editorial/SermonPreview";
 
 export default function Home() {
@@ -34,6 +35,10 @@ export default function Home() {
       id="main-content"
       className="mx-auto max-w-5xl flex-1 px-6 py-16 sm:px-10 sm:py-20"
     >
+      <section aria-label="Temple of Toan" className="-mt-6 mb-10 sm:-mt-10">
+        <LogoArtwork priority />
+      </section>
+
       {hero ? (
         <section aria-labelledby="hero-heading">
           <h1 id="hero-heading" className="sr-only">
