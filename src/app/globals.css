@@ -1,0 +1,55 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+  --color-abyss: #0a0809;
+  --color-bone: #e8e1d1;
+  --color-blood: #d3141f;
+  --color-gold: #b08d3e;
+}
+
+@theme inline {
+  --color-abyss: var(--color-abyss);
+  --color-bone: var(--color-bone);
+  --color-blood: var(--color-blood);
+  --color-gold: var(--color-gold);
+  --font-heading: var(--font-pirata);
+  --font-body: var(--font-inter);
+  --font-mono: ui-monospace, "SF Mono", "Menlo", "Consolas", monospace;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-abyss);
+    color: var(--color-bone);
+  }
+
+  .font-heading,
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-synthesis: none;
+  }
+
+  ::selection {
+    background: var(--color-blood);
+    color: var(--color-bone);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-blood);
+    outline-offset: 3px;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
