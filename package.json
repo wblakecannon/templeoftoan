@@ -2,6 +2,10 @@
   "name": "templeoftoan",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.34.9",
+  "engines": {
+    "node": ">=20.9"
+  },
   "scripts": {
     "dev": "next dev",
     "prebuild": "pnpm content:validate && pnpm content:index",
