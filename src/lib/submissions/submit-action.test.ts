@@ -4,7 +4,6 @@ const verifyUploadedObjectMock = vi.fn();
 const verifyUploadedGpxFileMock = vi.fn();
 const deleteObjectMock = vi.fn().mockResolvedValue(undefined);
 const createSubmissionMock = vi.fn();
-const notifyCreatedMock = vi.fn().mockResolvedValue(undefined);
 
 // The module-level RateLimiter in submit-action.ts is a singleton shared
 // across every test in this file (5 requests / 10 min). Give each test
@@ -27,12 +26,6 @@ vi.mock("./upload", () => ({
 vi.mock("./service", () => ({
   getSubmissionService: () => ({
     createSubmission: createSubmissionMock,
-  }),
-}));
-
-vi.mock("./notify", () => ({
-  getSubmissionNotificationService: () => ({
-    notifyCreated: notifyCreatedMock,
   }),
 }));
 
@@ -89,7 +82,6 @@ describe("submitContribution", () => {
       submissionId: "sub-123",
       reference: "console:sub-123",
     });
-    notifyCreatedMock.mockReset().mockResolvedValue(undefined);
   });
 
   it("succeeds with no photos attached", async () => {
@@ -189,7 +181,6 @@ describe("submitContribution", () => {
     expect(result.status).toBe("error");
     expect(result.fieldErrors?.photos).toMatch(/no longer available/i);
     expect(createSubmissionMock).not.toHaveBeenCalled();
-    expect(notifyCreatedMock).not.toHaveBeenCalled();
   });
 
   it("rejects invalid text fields before ever touching uploaded media", async () => {

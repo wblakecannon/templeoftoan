@@ -30,4 +30,4 @@ default Next.js build (`pnpm build`, which runs content validation first).
   and `NEXT_PUBLIC_ENABLE_INDEXING=true` only when ready to be indexed.
 - Preview branch (`development`): set `NEXT_PUBLIC_SITE_URL=https://dev.templeoftoan.com`
   and `SHOW_DRAFT_CONTENT=true`. Leave indexing off.
-- See `.env.example` for analytics and submission (GitHub, S3, Resend) settings.
+- See `.env.example` for analytics and submission (GitHub, S3) settings.

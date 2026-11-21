@@ -4,7 +4,6 @@ import { submissionFormSchema, type ValidatedSubmission } from "./schema";
 import { getMediaUploadTargetService } from "./upload";
 import type { UploadedMedia } from "./upload/types";
 import { getSubmissionService } from "./service";
-import { getSubmissionNotificationService } from "./notify";
 import { RateLimiter } from "./rate-limit";
 import { getClientKey } from "./client-key";
 
@@ -246,18 +245,11 @@ export async function submitContribution(
     receivedAt: new Date().toISOString(),
   };
 
-  const result = await getSubmissionService().createSubmission(
+  await getSubmissionService().createSubmission(
     submission,
     verifiedMedia,
     verifiedGpx,
   );
-
-  await getSubmissionNotificationService().notifyCreated({
-    submissionId: result.submissionId,
-    contributorName: submission.contributorName,
-    submissionType: submission.submissionType,
-    reference: result.reference,
-  });
 
   return { status: "success" };
 }
